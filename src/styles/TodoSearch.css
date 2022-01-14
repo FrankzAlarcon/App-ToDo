@@ -1,0 +1,10 @@
+.input-search {
+  margin: 2rem 1rem 1rem ;
+  width: calc(100% - 2rem);
+  max-width: 40rem;
+  height: 3rem;
+  border: none;
+  font-family: 'Krub', sans-serif;
+  padding: 0 .5rem;
+  border-radius: .5rem;
+}

@@ -1,0 +1,33 @@
+:root {
+  /*Colors*/
+  --white: #fff;
+  --black: #1a1b15;
+  --blue: #0da6f3;
+  --background: #24282f;
+  /*Font weights*/
+  --bold: 700;
+}
+html{
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+*,*::after,*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-size: 16px;
+  background-color: var(--background);
+  font-family: 'Krub', sans-serif;
+}
+#app{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container {
+  background-color: var(--black);
+  border-radius: 0 0 1rem 1rem;
+  text-align: center;
+}

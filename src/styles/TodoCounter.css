@@ -1,0 +1,12 @@
+.todo-counter {
+  background-color: var(--blue);
+  width: 100%;
+  min-height: 10rem;
+  height: auto;
+  text-align: center;
+  padding: 3rem 1rem;
+  border-radius: 0 0 1rem 1rem;
+  font-size: 3.4rem;
+  font-family: 'ubuntu', sans-serif;
+  color: var(--white);
+}

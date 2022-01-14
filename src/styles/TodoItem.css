@@ -1,0 +1,19 @@
+.todo-item-container{
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 2rem);
+  background-color: var(--white);
+  padding: 1rem;
+  margin: 1rem 1rem;
+  border-radius: .5rem;
+}
+.todo-item-container img {
+  width: 3rem;
+  height: 3rem;
+  margin: 0 .5rem;
+  transition: .3s;
+  cursor: pointer;
+}
+.todo-item-container img:hover {
+  transform: scale(1.05);
+}
