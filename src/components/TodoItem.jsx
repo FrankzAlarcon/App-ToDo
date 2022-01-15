@@ -5,14 +5,28 @@ import remove from '@images/remove.png';
 import unchecked from '@images/unchecked.png';
 import '@styles/TodoItem.css';
 
-function TodoItem({text}) {
+function TodoItem({text, isCompleted, toggleCompleteTodo, deleteTodo}) {
+  const onComplete = () => {
+    toggleCompleteTodo(text)
+  }
+  const onDelete = () => {
+    deleteTodo(text);
+  }
   return (
     <li className='todo-item-container'>
-      <img className='todo-unchecked-image' src={unchecked} alt='Check or uncheck a todo'/>
-      <p>{text}</p>
+      <img
+        className='todo-unchecked-image'
+        src={isCompleted ? checked:unchecked}
+        onClick={onComplete}
+        alt='Check or uncheck a todo'/>
+      <p className={isCompleted ? 'todo-checked-text':'todo-unchecked-text'} >{text}</p>
       <div>
         <img className='todo-edit-image' src={edit} alt='Edit a todo'/>
-        <img className='todo-remove-image' src={remove} alt='Remove a todo'/>
+        <img
+          className='todo-remove-image'
+          src={remove}
+          onClick={onDelete}
+          alt='Remove a todo'/>
       </div>
     </li>
   );

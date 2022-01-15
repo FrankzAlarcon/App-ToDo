@@ -7,6 +7,6 @@
   padding: 3rem 1rem;
   border-radius: 0 0 1rem 1rem;
   font-size: 3.4rem;
-  font-family: 'ubuntu', sans-serif;
+  font-family: var(--secondaryFont);
   color: var(--white);
 }

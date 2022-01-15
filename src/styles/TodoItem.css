@@ -17,3 +17,9 @@
 .todo-item-container img:hover {
   transform: scale(1.05);
 }
+.todo-unchecked-text {
+  text-decoration: none;
+}
+.todo-checked-text {
+  text-decoration: line-through;
+}

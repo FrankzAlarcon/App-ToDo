@@ -20,7 +20,8 @@ const webpackConfiguration ={
       "@images": path.resolve(__dirname, 'src/images/'),
       "@hooks": path.resolve(__dirname, 'src/hooks/'),
       "@styles": path.resolve(__dirname, 'src/styles/'),
-      "@containers": path.resolve(__dirname, 'src/containers/')
+      "@containers": path.resolve(__dirname, 'src/containers/'),
+      "@context": path.resolve(__dirname, 'src/context')
     }
   },
   mode: 'development',

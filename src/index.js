@@ -1,6 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from '@components/App';
+import App from "./App";
+import { TodoProvider } from "./context/TodoContext";
 
-
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(
+  <TodoProvider>
+    <App />
+  </TodoProvider>,
+  document.getElementById("app")
+);

@@ -4,6 +4,9 @@
   --black: #1a1b15;
   --blue: #0da6f3;
   --background: #24282f;
+  /*Fonts*/
+  --mainFont: 'Krub', sans-serif;
+  --secondaryFont: 'Ubuntu', sans-serif;
   /*Font weights*/
   --bold: 700;
 }
@@ -19,7 +22,7 @@ html{
 body {
   font-size: 16px;
   background-color: var(--background);
-  font-family: 'Krub', sans-serif;
+  font-family: var(--mainFont);
 }
 #app{
   display: flex;
@@ -30,4 +33,17 @@ body {
   background-color: var(--black);
   border-radius: 0 0 1rem 1rem;
   text-align: center;
+}
+.loading {
+  background-color: #e1e1e1;
+  border-radius: 0 0 1rem 1rem;
+}
+.initial-message {
+  color: var(--white);
+  font-size: 2rem;
+  font-weight: var(--bold);
+  padding: 1rem;
+}
+.d-none {
+  display: none !important;
 }
