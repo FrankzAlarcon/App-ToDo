@@ -33,6 +33,9 @@ body {
   background-color: var(--black);
   border-radius: 0 0 1rem 1rem;
   text-align: center;
+  min-width: 32rem;
+  width: 100%;
+  max-width: 60rem;
 }
 .loading {
   background-color: #e1e1e1;
