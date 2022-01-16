@@ -1,51 +1,107 @@
-import React, { useContext, useState } from 'react'
-import TodoCounter from '@components/TodoCounter';
-import TodoSearch from '@components/TodoSearch';
-import TodoList from '@containers/TodoList';
-import TodoItem from '@components/TodoItem';
-import CreateTodoButton from '@components/CreateTodoButton';
-import { TodoContext } from '@context/TodoContext';
+import React from "react";
+import TodoCounter from "@components/TodoCounter";
+import TodoSearch from "@components/TodoSearch";
+import TodoList from "@containers/TodoList";
+import TodoItem from "@components/TodoItem";
+import CreateTodoButton from "@components/CreateTodoButton";
 import Modal from "@containers/Modal";
 import TodosLoading from "@components/TodosLoading";
-import '@styles/global.css';
+import TodoHeader from "@containers/TodoHeader";
+import TodoMessage from "@components/TodoMessage";
+import { useTodos } from "@hooks/useTodos";
+import "@styles/global.css";
 
 function App() {
   const {
-    todos,
-    totalTodos,
-    completedTodos,
-    setSearchValue,
-    error,
-    loading,
-    filteredTodos,
-    toggleCompleteTodo,
-    modalIsOpen,
-    setModalIsOpen,
-    addTodo,
-    deleteTodo,
-    todoValue,
-    setTodoValue,
-    isEditingTodo,
-    setIsEditingTodo,
-    todoEditValue,
-    setTodoEditValue,
-    saveTodos
-  } = useContext(TodoContext);
+    todos, filteredTodos, totalTodos, completedTodos,
+    searchValue, setSearchValue,
+    error, loading,
+    toggleCompleteTodo, addTodo,  deleteTodo,
+    modalIsOpen, setModalIsOpen,
+    todoValue,setTodoValue,
+    isEditingTodo, setIsEditingTodo,
+    todoEditValue, setTodoEditValue,
+    saveTodos,
+  } = useTodos();
   return (
-    <div className='container'>
-      <TodoCounter 
-        totalTodos={totalTodos}
-        completedTodos={completedTodos}
-      />
-      <TodoSearch setSearchValue={setSearchValue}/>
-        <TodoList>
-          {error && <p>Ha ocurrido un error</p>}
-          {loading && new Array(4).fill().map((number) => <TodosLoading key={number} />)}
-          {!loading && !filteredTodos.length && <p className='initial-message'>Crea tu primer todo!!!</p>}
-          {filteredTodos.map((todo, index) => <TodoItem key={index} setTodoEditValue={setTodoEditValue} setIsEditingTodo={setIsEditingTodo} setModalIsOpen={setModalIsOpen} todoValue={todoValue} setTodoValue={setTodoValue} toggleCompleteTodo={toggleCompleteTodo} deleteTodo={deleteTodo} {...todo}/>)}
-        </TodoList>
-        {modalIsOpen && <Modal saveTodos={saveTodos} setTodoEditValue={setTodoEditValue} todoEditValue={todoEditValue} setIsEditingTodo={setIsEditingTodo} isEditingTodo={isEditingTodo} todos={todos} addTodo={addTodo} todoValue={todoValue} setTodoValue={setTodoValue} modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen}/>}
-        {!loading && <CreateTodoButton setModalIsOpen={setModalIsOpen}/>}
+    <div className="container">
+      <TodoHeader loading={loading}>
+        <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos} />
+        <TodoSearch loading={loading} setSearchValue={setSearchValue} />
+      </TodoHeader>
+      <TodoList 
+        error={error}
+        onError={() => <TodoMessage text={'Ha ocurrido un error'}/>}
+        loading={loading}
+        onLoading={() => new Array(4).fill().map((number, index) => <TodosLoading key={index} />)}
+        todos={todos}
+        onEmptyTodos={() => <TodoMessage text={'Crea tu primer todo!!!'}/>}
+        filteredTodos={filteredTodos}
+        onEmptyFilteredTodos={() => <TodoMessage text={`No existen coindicencias para ${searchValue}` }/>}
+        // render={ (todo, index) => (
+        //   <TodoItem
+        //     key={index}
+        //     setTodoEditValue={setTodoEditValue}
+        //     setIsEditingTodo={setIsEditingTodo}
+        //     setModalIsOpen={setModalIsOpen}
+        //     todoValue={todoValue}
+        //     setTodoValue={setTodoValue}
+        //     toggleCompleteTodo={toggleCompleteTodo}
+        //     deleteTodo={deleteTodo}
+        //     {...todo}
+        //   />
+        // )}
+      >
+        {(todo, index) => (
+          <TodoItem
+            key={index}
+            setTodoEditValue={setTodoEditValue}
+            setIsEditingTodo={setIsEditingTodo}
+            setModalIsOpen={setModalIsOpen}
+            todoValue={todoValue}
+            setTodoValue={setTodoValue}
+            toggleCompleteTodo={toggleCompleteTodo}
+            deleteTodo={deleteTodo}
+            {...todo}
+          />
+        )}
+      </TodoList>
+      {/* <TodoList>
+        {error && <TodoMessage text={'Ha ocurrido un error'}/>}
+        {loading &&
+          new Array(4).fill().map((number, index) => <TodosLoading key={index} />)}
+        {!loading && !todos.length && <TodoMessage text={'Crea tu primer todo!!!'}/>}
+        {!loading && !filteredTodos.length && !!todos.length && <TodoMessage text={'No existen coindicencias'}/>}
+        {filteredTodos.map((todo, index) => (
+          <TodoItem
+            key={index}
+            setTodoEditValue={setTodoEditValue}
+            setIsEditingTodo={setIsEditingTodo}
+            setModalIsOpen={setModalIsOpen}
+            todoValue={todoValue}
+            setTodoValue={setTodoValue}
+            toggleCompleteTodo={toggleCompleteTodo}
+            deleteTodo={deleteTodo}
+            {...todo}
+          />
+        ))}
+      </TodoList> */}
+      {modalIsOpen && (
+        <Modal
+          saveTodos={saveTodos}
+          setTodoEditValue={setTodoEditValue}
+          todoEditValue={todoEditValue}
+          setIsEditingTodo={setIsEditingTodo}
+          isEditingTodo={isEditingTodo}
+          todos={todos}
+          addTodo={addTodo}
+          todoValue={todoValue}
+          setTodoValue={setTodoValue}
+          modalIsOpen={modalIsOpen}
+          setModalIsOpen={setModalIsOpen}
+        />
+      )}
+      {!loading && <CreateTodoButton setModalIsOpen={setModalIsOpen} />}
     </div>
   );
 }
