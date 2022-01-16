@@ -5,12 +5,18 @@ import remove from '@images/remove.png';
 import unchecked from '@images/unchecked.png';
 import '@styles/TodoItem.css';
 
-function TodoItem({text, isCompleted, toggleCompleteTodo, deleteTodo}) {
+function TodoItem({setTodoEditValue, setIsEditingTodo, setModalIsOpen, setTodoValue, text, isCompleted, toggleCompleteTodo, deleteTodo}) {
   const onComplete = () => {
     toggleCompleteTodo(text)
   }
   const onDelete = () => {
     deleteTodo(text);
+  }
+  const onEditTodo = () => {
+    setModalIsOpen(true);
+    setIsEditingTodo(true);
+    setTodoValue(text);
+    setTodoEditValue(text);
   }
   return (
     <li className='todo-item-container'>
@@ -21,7 +27,7 @@ function TodoItem({text, isCompleted, toggleCompleteTodo, deleteTodo}) {
         alt='Check or uncheck a todo'/>
       <p className={isCompleted ? 'todo-checked-text':'todo-unchecked-text'} >{text}</p>
       <div>
-        <img className='todo-edit-image' src={edit} alt='Edit a todo'/>
+        <img className='todo-edit-image' src={edit} alt='Edit a todo' onClick={onEditTodo}/>
         <img
           className='todo-remove-image'
           src={remove}

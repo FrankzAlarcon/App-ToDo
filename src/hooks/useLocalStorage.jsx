@@ -19,7 +19,7 @@ function useLocalStorage(keyLocalStorage, initialValue) {
         }
         setItem(parsedItem);
         setLoading(false);
-      }, 1000)
+      }, 2000)
     } catch (error) {
       setError(true);
     }
@@ -29,7 +29,7 @@ function useLocalStorage(keyLocalStorage, initialValue) {
   const saveItem = (newItem) => {
     try {
       setItem(newItem);
-      localStorage.setItem(keyLocalStorage, JSON.stringify(newItem))
+      localStorage.setItem(keyLocalStorage, JSON.stringify(newItem));
     } catch (error) {
       setError(true);
     }
@@ -38,7 +38,8 @@ function useLocalStorage(keyLocalStorage, initialValue) {
     item,
     saveItem,
     loading,
-    error
+    error,
+    setItem
   }
 }
 
