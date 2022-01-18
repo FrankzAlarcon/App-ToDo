@@ -9,6 +9,7 @@ import TodosLoading from "@components/TodosLoading";
 import TodoHeader from "@containers/TodoHeader";
 import TodoMessage from "@components/TodoMessage";
 import { useTodos } from "@hooks/useTodos";
+import ChangeAlertWithStorageListener from "@components/ChangeAlert";
 import "@styles/global.css";
 
 function App() {
@@ -38,40 +39,7 @@ function App() {
         onEmptyTodos={() => <TodoMessage text={'Crea tu primer todo!!!'}/>}
         filteredTodos={filteredTodos}
         onEmptyFilteredTodos={() => <TodoMessage text={`No existen coindicencias para ${searchValue}` }/>}
-        // render={ (todo, index) => (
-        //   <TodoItem
-        //     key={index}
-        //     setTodoEditValue={setTodoEditValue}
-        //     setIsEditingTodo={setIsEditingTodo}
-        //     setModalIsOpen={setModalIsOpen}
-        //     todoValue={todoValue}
-        //     setTodoValue={setTodoValue}
-        //     toggleCompleteTodo={toggleCompleteTodo}
-        //     deleteTodo={deleteTodo}
-        //     {...todo}
-        //   />
-        // )}
       >
-        {(todo, index) => (
-          <TodoItem
-            key={index}
-            setTodoEditValue={setTodoEditValue}
-            setIsEditingTodo={setIsEditingTodo}
-            setModalIsOpen={setModalIsOpen}
-            todoValue={todoValue}
-            setTodoValue={setTodoValue}
-            toggleCompleteTodo={toggleCompleteTodo}
-            deleteTodo={deleteTodo}
-            {...todo}
-          />
-        )}
-      </TodoList>
-      {/* <TodoList>
-        {error && <TodoMessage text={'Ha ocurrido un error'}/>}
-        {loading &&
-          new Array(4).fill().map((number, index) => <TodosLoading key={index} />)}
-        {!loading && !todos.length && <TodoMessage text={'Crea tu primer todo!!!'}/>}
-        {!loading && !filteredTodos.length && !!todos.length && <TodoMessage text={'No existen coindicencias'}/>}
         {filteredTodos.map((todo, index) => (
           <TodoItem
             key={index}
@@ -85,7 +53,7 @@ function App() {
             {...todo}
           />
         ))}
-      </TodoList> */}
+      </TodoList>
       {modalIsOpen && (
         <Modal
           saveTodos={saveTodos}
@@ -102,6 +70,7 @@ function App() {
         />
       )}
       {!loading && <CreateTodoButton setModalIsOpen={setModalIsOpen} />}
+      <ChangeAlertWithStorageListener />
     </div>
   );
 }

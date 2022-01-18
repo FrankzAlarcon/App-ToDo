@@ -1,5 +1,6 @@
 .todo-counter {
   background-color: var(--blue);
+  box-shadow: 0 0 6px rgb(104, 163, 250);
   width: 100%;
   min-height: 10rem;
   height: auto;

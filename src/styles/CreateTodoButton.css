@@ -17,6 +17,7 @@
   font-weight: var(--bold);
   margin-bottom: 1rem;
   transition: .3s;
+  box-shadow: 0 0 5px rgb(104, 163, 250);
 }
 .add-todos:hover {
   transform: scale(1.05);

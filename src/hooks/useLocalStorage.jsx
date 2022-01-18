@@ -19,7 +19,7 @@ function useLocalStorage(keyLocalStorage, initialValue) {
         }
         setItem(parsedItem);
         setLoading(false);
-      }, 2000)
+      }, 1500)
     } catch (error) {
       setError(true);
     }

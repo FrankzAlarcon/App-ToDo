@@ -21,6 +21,7 @@
   width: 31rem;
   height: 20rem;
   background-color: var(--blue);
+  box-shadow: 0 0 6px rgb(104, 163, 250);
   border-radius: 1rem;
 }
 .modal-container .modal-text {

@@ -8,10 +8,9 @@ function TodoList( props ) {
       {props.loading && props.onLoading()}
       {!props.loading && !props.todos.length && props.onEmptyTodos()}
       {!props.loading && !props.filteredTodos.length &&!!props.todos.length && props.onEmptyFilteredTodos()}
-      
       <ul className='list-todos'>
-        {/* {children} */}
-        {props.filteredTodos.map(props.render || props.children)}
+        {props.children}
+        {/* {props.filteredTodos.map(props.render || props.children)} */}
       </ul>
     </section>
   );
